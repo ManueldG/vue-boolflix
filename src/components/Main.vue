@@ -3,8 +3,8 @@
         <ul>
             <li v-for="(el,index) in g.data.results" :key="index">
                 {{el.original_title}}
-
             </li>
+            
         </ul>
         
 
