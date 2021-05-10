@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
@@ -50,5 +51,17 @@
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManueldG/vue-boolflix.git"
+  },
+  "author": "Manuel della Gala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManueldG/vue-boolflix/issues"
+  },
+  "homepage": "https://github.com/ManueldG/vue-boolflix#readme"
 }
