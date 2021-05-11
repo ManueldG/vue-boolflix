@@ -1,7 +1,7 @@
 <template>
-   <div id="scheda" >
+   
                     
-            <li>
+            <li id="scheda">
                 {{lista.title}}
                 {{lista.original_title}}
                 <img v-if="lista.original_language=='en'" src="img/en.png" alt="en">
@@ -13,7 +13,7 @@
             </li>       
        
 
-   </div>
+   
 </template>
 
 <script>
@@ -32,7 +32,7 @@ export default {
     computed:{
         cssVars(){
             return{
-                '--voto-medio': (this.lista.vote_average*10)+'%',
+                '--voto-medio': (this.lista.vote_average*5)+'%',
             }
         }
     }
@@ -49,12 +49,19 @@ img{
 
 li{ 
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    flex-basis: calc(100vw / 4);
+    flex-wrap: wrap;
+    margin: 5px;
+    border: 1px solid green;
+    border-radius: 5px;    
+    background: greenyellow;
         .barra{
         width: var(--voto-medio);
         height: 16px;
         background-color: yellow;
         border: 1px solid green;
+        
     }
 }
 
