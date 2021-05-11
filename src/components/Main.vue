@@ -24,7 +24,7 @@ export default {
     data(){
         return {
             g:{},
-            query:'futuro',
+            query:'',
 
         }
     },

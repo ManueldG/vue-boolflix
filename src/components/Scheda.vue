@@ -4,10 +4,9 @@
             <li>
                 {{lista.title}}
                 {{lista.original_title}}
-                {{lista.original_language}}
                 <img v-if="lista.original_language=='en'" src="img/en.png" alt="en">
-                <img v-if="lista.original_language=='it'" src="img/it.png" alt="it">
-                <div v-if="lista.original_language!='en'||'it'">{{lista.original_language}}</div>
+                <img v-else-if="lista.original_language=='it'" src="img/it.png" alt="it">
+                <div v-else>{{lista.original_language}}</div>
                 {{lista.vote_average}}
                 <div class="barra" :style="cssVars" ></div> <!--:style="'width:'+(lista.vote_average*10)+'%'"-->
                 
@@ -41,20 +40,27 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
 
 
 img{
     width: 50px;
 }
 
-.barra{
-    width: var(--voto-medio);
-    height: 5px;
-    background-color: yellow;
-    border: 1px solid green;
-
+li{ 
+    display: flex;
+    justify-content: space-around;
+        .barra{
+        width: var(--voto-medio);
+        height: 16px;
+        background-color: yellow;
+        border: 1px solid green;
+    }
 }
 
+
 </style>
+
+/*
+esempio img https://image.tmdb.org/t/p/w500/u1z05trCA7AuSuDhi365grwdos1.jpg
+ */
