@@ -30,6 +30,7 @@ export default {
         return {
             tv:{},
             film:{},
+            best:{},
             query:'',
 
         }
@@ -38,21 +39,26 @@ export default {
         getData(){ 
             let one = 'https://api.themoviedb.org/3/search/movie?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
             let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
+            let three = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
             
             
             const requestOne = axios.get(one);
             const requestTwo = axios.get(two);
+            const requestThree = axios.get(three);
             
             
-            axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
+            axios.all([requestOne, requestTwo,requestThree]).then(axios.spread((...responses) => {
             const responseOne = responses[0]
             const responseTwo = responses[1]
+            const responseThree = responses[2]
             console.log("res1",responseOne)
             console.log("res2",responseTwo)
+            console.log("res3",responseThree)
             console.log("responses",responses[0].data.results);
             //this.g=responses[0].data.results;
-            this.film=responses[0].data.results;
-            this.tv=responses[1].data.results;
+            this.film=responseOne.data.results;
+            this.tv=responseTwo.data.results;
+            this.best=responseThree.data.results;
             console.log("this",this.g);
             
             // use/access the results 
@@ -83,7 +89,7 @@ export default {
             
         },
         importQ(text){
-            console.log("text",text);
+            console.log("import text",text);
             this.query = text;
             this.getData();
         }
