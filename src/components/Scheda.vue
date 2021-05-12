@@ -41,10 +41,15 @@ export default {
     props:{
         lista:Object,
     },
+    methods:{
+        five2ten(val){  
+            return (Math.floor(((val/10)*(5-0)+0)));  
+        }
+    },
     computed:{
         cssVars(){
             return{
-                '--voto-medio': (this.lista.vote_average*10)+'%',
+                '--voto-medio': (this.five2ten(this.lista.vote_average)*20)+'%',
                 '--sfondo-scheda': 'greenyellow'
             };
         }
@@ -58,17 +63,19 @@ export default {
 
 li#scheda{
     position:relative;
+    width: 150px;
     height: 200px;
-    width: 100px;
     margin: 5px;
-    border: 1px solid;
-    border-radius: 5px;    
-    background: var(--sfondo-scheda);
+    list-style:none;
+
+
 
     .lato-a{  
         position:absolute; 
         width:100%;
         height:100%; 
+        border: 1px solid green;
+        border-radius: 5px;        
         margin:0;
         top:0;
         background-color: green;
@@ -81,8 +88,9 @@ li#scheda{
 
         .vote{
             position: relative;
+            width: 100px;
+            margin: 0 auto;
             .stars{
-
                 background-image: linear-gradient(yellow,yellow);
                 background-size: var(--voto-medio) 100%;
                 background-repeat: no-repeat;
@@ -90,7 +98,14 @@ li#scheda{
                 background-clip: text;
                 -moz-background-clip: text;
                 -webkit-background-clip: text;    
-                background-color: var(--sfondo-scheda);        
+                background-color: var(--sfondo-scheda);
+                width: 100%;
+                
+                .material-icons-two-tone {
+                    font-size: 18px;
+                    letter-spacing: -8px;
+                }
+        
                 z-index: 1;        
             }
         }
@@ -98,16 +113,18 @@ li#scheda{
 
     .lato-b{  
         position:absolute;
+        width: 150px;
         height: 200px;
-        width: 100px;
+        border: 1px solid green;
+        border-radius: 5px;
         top:0;
         background-color: red;
         z-index:0;
         transform: rotateY(180deg);
         transition: transform 2s , z-index 2s;
         img{
-            width: 50px;
-            height: 25px;
+            width: 150px;
+            height: 200px;
         }
         
 
