@@ -1,6 +1,6 @@
 <template>
 <div id="Search"> 
-    <input name="text" id="query" placeholder="cerca" type="text" v-model="testo" @keyup.enter.prevent="$emit('invio',testo)">
+    <input name="text" id="query" placeholder="cerca" type="text" v-model.trim="testo" @keyup.enter.prevent="$emit('invio',testo)">
     <input type="submit" value="invia" @click="$emit('invio',testo)">
 </div>
   
@@ -11,7 +11,7 @@ export default {
     name:'Search',
     data(){
         return{
-            testo:'',
+            testo:'star',
         }
     }
 
