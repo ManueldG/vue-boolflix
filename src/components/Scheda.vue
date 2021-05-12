@@ -1,7 +1,7 @@
 <template>
    
                     
-            <li id="scheda">
+            <li id="scheda"  :style="cssVars">
                 <img :src="'https://image.tmdb.org/t/p/w500'+lista.poster_path" alt="en">
                 {{lista.title||lista.name}}
                 {{lista.original_title}}
@@ -40,7 +40,8 @@ export default {
         cssVars(){
             return{
                 '--voto-medio': (this.lista.vote_average*10)+'%',
-            }
+                '--sfondo-scheda': 'greenyellow'
+            };
         }
     }
 
@@ -69,18 +70,11 @@ img{
         color: transparent;
         background-clip: text;
         -moz-background-clip: text;
-        -webkit-background-clip: text;
+        -webkit-background-clip: text;    
+        background-color: var(--sfondo-scheda);        
+        z-index: 1;        
+    }
     
-        background-color: var(--sfondo-scheda);
-        
-        z-index: 1;
-        
-    }
-    .barra{
-        position: absolute;
-        top: 0;
-        z-index: 0;
-    }
 }
 
 li{ 
@@ -92,13 +86,7 @@ li{
     border: 1px solid;
     border-radius: 5px;    
     background: var(--sfondo-scheda);
-        .barra{
-        width: var(--voto-medio);
-        height: 16px;
-        background-color: yellow;
-        border: 1px solid green;
         
-    }
 }
 
 

@@ -4,11 +4,11 @@
         </Search>
         <ul>
         film
-        <Scheda :lista="el" v-for="(el,index) in film"  :key="index"> 
+        <Scheda :lista="el" v-for="(el,index) in film"  :key="'film'+index"> 
                 {{el}}{{index}}
         </Scheda>
         tv
-        <Scheda :lista="el" v-for="(el,index) in tv"  :key="index"> 
+        <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
                 {{el}}{{index}}
         </Scheda>
         </ul>
@@ -81,20 +81,16 @@ export default {
             });*/
         
             
-  },
+        },
         importQ(text){
             console.log("text",text);
             this.query = text;
             this.getData();
         }
-  },
-  created(){
-      console.log("created");
-      
-  }
-        
-    
-
+    },
+    created(){
+        console.log("created");      
+    }
 }
 </script>
 
