@@ -123,6 +123,8 @@ export default {
 
 <style lang="scss">
 
+@import "@/scss/vars";
+
 ul{
     display:flex;
     flex-wrap: nowrap;
