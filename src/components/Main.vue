@@ -4,6 +4,15 @@
             @invio="importQ">
         </Search>
         <ul>
+            <div class="lista" v-if="(!film.length||!tv.length)">
+                <div class="titolo">
+                    {{ (best.length) ? "best" : "" }}
+                </div>   
+                <Scheda :lista="el" v-for="(el,index) in best"  :key="'best'+index"> 
+                        {{el}}{{index}}
+                </Scheda>
+            </div>  
+
             <div class="lista">
                 <div class="titolo">
                     {{ (film.length) ? "Film" : "" }}
@@ -53,8 +62,8 @@ export default {
             let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+this.query
             let three ='https://api.themoviedb.org/3/discover/movie?api_key=49b7715adeda3f2ed02386b0db03af61&primary_release_year='+Y+'&sort_by=popularity.desc&language=it-IT'
              
-            const requestOne = axios.get(one);
-            const requestTwo = axios.get(two);
+            const requestOne = (this.query!=='')?axios.get(one):({});
+            const requestTwo = (this.query!=='')?axios.get(two):({});
             const requestThree = axios.get(three);
             
             
@@ -65,11 +74,11 @@ export default {
             console.log("res1",responseOne)
             console.log("res2",responseTwo)
             console.log("res3",responseThree)
-            console.log("responses",responses[0].data.results);
+            console.log("responses",responses[0]);
             //this.g=responses[0].data.results;
-            this.film=responseOne.data.results;
-            this.tv=responseTwo.data.results;
-            this.best=responseThree.data.results;
+            this.film = (typeof responseOne.data !== 'undefined')?responseOne.data.results:'';
+            this.tv =   (typeof responseTwo.data !== 'undefined')?responseTwo.data.results:'';
+            this.best = responseThree.data.results;
             console.log("this",this.g);
             
             // use/access the results 
@@ -106,7 +115,8 @@ export default {
         }
     },
     created(){
-        console.log("created");      
+        console.log("created");
+        this.getData();     
     }
 }
 </script>
