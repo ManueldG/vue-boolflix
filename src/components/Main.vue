@@ -118,12 +118,13 @@ ul{
     flex-wrap: nowrap;
     flex-direction:column;
     justify-content: space-evenly;
+
     .lista{
         display:flex;
         justify-content: space-between;
-        overflow: scroll;
-        
-        
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin: 20px 10px;          
     }
 }
 

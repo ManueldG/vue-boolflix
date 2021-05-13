@@ -89,6 +89,7 @@ li#scheda{
             color:rgb(0, 0, 0);
             overflow: hidden;
             }
+
         img{
             height: 20px;
             width: 30px;
@@ -158,6 +159,5 @@ li#scheda{
 </style>
 
 /*
-
 esempio img https://image.tmdb.org/t/p/w500/u1z05trCA7AuSuDhi365grwdos1.jpg
  */
