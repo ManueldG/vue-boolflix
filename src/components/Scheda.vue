@@ -68,15 +68,13 @@ li#scheda{
     position:relative;
     width: 150px;
     height: 200px;
-    margin: 5px;
+    margin: 26px 100px;
     list-style:none;
-
-
 
     .lato-a{  
         position:absolute; 
-        width:100%;
-        height:100%; 
+        width: 150px;
+        height: 200px;
         border: 1px solid green;
         border-radius: 5px;        
         margin:0;
@@ -160,5 +158,6 @@ li#scheda{
 </style>
 
 /*
+
 esempio img https://image.tmdb.org/t/p/w500/u1z05trCA7AuSuDhi365grwdos1.jpg
  */

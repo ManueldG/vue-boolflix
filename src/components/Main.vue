@@ -111,13 +111,20 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 ul{
     display:flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction:column;
     justify-content: space-evenly;
+    .lista{
+        display:flex;
+        justify-content: space-between;
+        overflow: scroll;
+        
+        
+    }
 }
 
 
