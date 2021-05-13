@@ -37,11 +37,11 @@ export default {
     },
     methods:{
         getData(){ 
-            let one = 'https://api.themoviedb.org/3/search/movie?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
-            let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
-            let three = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&query='+this.query
-            
-            
+            let Y = new Date().getFullYear();
+            let one = 'https://api.themoviedb.org/3/search/movie?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+this.query
+            let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+this.query
+            let three ='https://api.themoviedb.org/3/discover/movie?api_key=49b7715adeda3f2ed02386b0db03af61&primary_release_year='+Y+'&sort_by=popularity.desc&language=it-IT'
+             
             const requestOne = axios.get(one);
             const requestTwo = axios.get(two);
             const requestThree = axios.get(three);
