@@ -3,10 +3,10 @@
                     
             <li id="scheda"  :style="cssVars">
                 <div class="lato-a">
-                    {{lista.title||lista.name}}
-                    {{lista.original_title}}
-                    <div v-if="lista.original_language=='en'">🇬🇧<img  src="img/en.png" alt="en"></div>
-                    <div v-else-if="lista.original_language=='it'">🇮🇹<img  src="img/it.png" alt="it"></div>
+                    <div class="titolo">Titolo:{{lista.title||lista.name}}</div>
+                    <div class="originale">Titolo Originale: {{lista.original_title}}</div>
+                    <div v-if="lista.original_language=='en'">🇬🇧<!--<img  src="img/en.png" alt="en">--></div>
+                    <div v-else-if="lista.original_language=='it'">🇮🇹<!--<img  src="img/it.png" alt="it">--></div>
                     <div v-else>{{lista.original_language}}</div>
                     {{lista.vote_average}}
                     <div class="vote">
@@ -63,18 +63,19 @@ export default {
 
 <style scoped lang="scss">
 
+@import "@/scss/vars";
 
 li#scheda{
     position:relative;
-    width: 150px;
-    height: 200px;
-    margin: 26px 100px;
+    width: $width-card;
+    height: $height-card;
+    margin: $margin-card;
     list-style:none;
 
     .lato-a{  
         position:absolute; 
-        width: 150px;
-        height: 200px;
+        width: $width-card;
+        height: $height-card;
         border: 1px solid green;
         border-radius: 5px;        
         margin:0;
@@ -122,8 +123,8 @@ li#scheda{
 
     .lato-b{  
         position:absolute;
-        width: 150px;
-        height: 200px;
+        width: $width-card;
+        height: $height-card;
         border: 1px solid green;
         border-radius: 5px;
         top:0;
@@ -135,11 +136,9 @@ li#scheda{
         transition: transform 2s , z-index 2s;
 
         img{
-            width: 150px;
-            height: 200px;
+            width: $width-card;
+            height: $height-card;
         }
-        
-
     }
 
     &:hover .lato-b{ 
