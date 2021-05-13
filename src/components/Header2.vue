@@ -1,11 +1,27 @@
 <template>
   <header id="Header">
       <img src="/img/MdGPlay.png" alt="LOGO">
+      <Search 
+        @invio="importQ">
+      </Search>
   </header>
 </template>
 
 <script>
+
+import Search from "./Search.vue";
+
 export default {
+  components: {
+    Search
+  },
+  methods: {
+    importQ(text){
+            console.log("import text",text);
+            this.query = text;
+            this.getData();
+        }
+  }
 
 }
 </script>

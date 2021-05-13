@@ -1,16 +1,27 @@
 <template>
     <main id="Main" >
-        <Search @invio="importQ">
+        <Search 
+            @invio="importQ">
         </Search>
         <ul>
-        film
-        <Scheda :lista="el" v-for="(el,index) in film"  :key="'film'+index"> 
-                {{el}}{{index}}
-        </Scheda>
-        tv
-        <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
-                {{el}}{{index}}
-        </Scheda>
+            <div class="lista">
+                <div class="titolo">
+                    {{ (film.length) ? "Film" : "" }}
+                </div>   
+                <Scheda :lista="el" v-for="(el,index) in film"  :key="'film'+index"> 
+                        {{el}}{{index}}
+                </Scheda>
+            </div>  
+
+        <div class="lista">
+            <div class="titolo">            
+                {{ (tv.length) ? "Tv" : "" }}
+            </div>  
+            <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
+                    {{el}}{{index}}
+            </Scheda>
+        </div>
+
         </ul>
 
     </main>
@@ -105,8 +116,8 @@ export default {
 ul{
     display:flex;
     flex-wrap: wrap;
+    flex-direction:column;
     justify-content: space-evenly;
-
 }
 
 
