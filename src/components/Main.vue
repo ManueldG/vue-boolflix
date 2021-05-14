@@ -1,11 +1,11 @@
 <template>
     <main id="Main"  >
         {{getData(text)}} <!--//prova--> 
-        <Search 
-            @invio="importQ" > <!--// prende dati da Search e chiama importQ con argomento testo -->
-        </Search>
+        <!--<Search 
+            @invio="importQ" >  prende dati da Search e chiama importQ con argomento testo 
+        </Search>-->
         <ul>
-            
+            {{(!film.length||!tv.length)? "": "Hai cercato:"}}
             <div class="lista">
                 <div class="titolo">
                     {{ (film.length) ? "Film" : "" }}
@@ -17,16 +17,16 @@
 
             <div class="lista">
                 <div class="titolo">            
-                    {{ (tv.length) ? "Tv" : "" }}
+                    {{ (tv.length) ? "Serie TV " : "" }}
                 </div>  
                 <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
                         {{el}}{{index}}
                 </Scheda>
             </div>
 
-            <div class="lista" v-if="(!film.length||!tv.length)"> <!--// controlla se gli oggetti film e tv sono popolati -->
+            <div class="lista"> <!--//    v-if="(!film.length||!tv.length)"     controlla se gli oggetti film e tv sono popolati -->
                 <div class="titolo">
-                    {{ (best.length) ? "best" : "" }} 
+                    {{ (best.length) ? "Migliori Film dell'anno:" : "" }} 
                 </div>   
                 <Scheda :lista="el" v-for="(el,index) in best"  :key="'best'+index">  <!--// lista props di scheda -->
                         {{el}}{{index}}
@@ -43,11 +43,11 @@
 <script>
 import axios from "axios";
 import Scheda from "./Scheda.vue";
-import Search from "./Search.vue";
+//import Search from "./Search.vue";
 export default {
     name : 'Main',
     components : {
-        Scheda,Search,
+        Scheda,//Search,
     },
     data(){
         return {
@@ -145,7 +145,9 @@ ul{
         justify-content: space-between;
         overflow-x: auto;
         overflow-y: hidden;
-        margin: 20px 10px;          
+        margin: 20px 5px; 
+        padding: 10px ;      
+           
     }
 }
 

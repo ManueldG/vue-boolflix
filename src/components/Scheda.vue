@@ -5,8 +5,8 @@
                 <div class="lato-a">
                     <div class="titolo">Titolo:{{lista.title||lista.name}}</div>
                     <div class="originale">Titolo Originale: {{lista.original_title}}</div>
-                    <div v-if="lista.original_language=='en'">🇬🇧<!--<img  src="img/en.png" alt="en">--></div>
-                    <div v-else-if="lista.original_language=='it'">🇮🇹<!--<img  src="img/it.png" alt="it">--></div>
+                    <div v-if="lista.original_language=='en'"><img  src="img/en.png" alt="en"></div>
+                    <div v-else-if="lista.original_language=='it'"><img  src="img/it.png" alt="it"></div>
                     <div v-else>{{lista.original_language}}</div>
                     {{lista.vote_average}}
                     <div class="vote">
@@ -70,7 +70,8 @@ li#scheda{
     width: $width-card;
     height: $height-card;
     margin: $margin-card;
-    list-style:none;
+    list-style: none;
+    text-overflow: ellipsis;
     
 
     .lato-a{  
@@ -79,8 +80,8 @@ li#scheda{
         height: $height-card;
         border: 1px solid green;
         border-radius: 5px;        
-        margin:0;
-        top:0;
+        margin: 0;
+        top: 0;
         background-color: #019ff9;
         background-image: linear-gradient(to bottom, #019ff9, #83cffa);
         z-index:1;
@@ -90,6 +91,7 @@ li#scheda{
             height: calc(100% - 50px);
             color:rgb(0, 0, 0);
             overflow: hidden;
+            text-overflow: ellipsis;
             }
 
         img{
