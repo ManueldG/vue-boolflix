@@ -11,7 +11,7 @@ export default {
     name:'Search',
     data(){
         return{
-            testo:'star',
+            testo:'',
         }
     }
 

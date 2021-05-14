@@ -18,7 +18,7 @@
                         </div>
                         <!--<div class="barra" :style="cssVars" ></div> :style="'width:'+(lista.vote_average*10)+'%'"-->
                     </div>  
-                    <div class="overview">{{lista.overview}}</div>{{"[..]"}}  
+                    <div class="overview">{{lista.overview}}</div>  
                 </div>
                 <div class="lato-b">                    
                     <img :src="'https://image.tmdb.org/t/p/w500'+lista.poster_path" alt="en">
@@ -76,22 +76,23 @@ li#scheda{
 
     .lato-a{  
         position:absolute; 
+        box-sizing: border-box;
         width: $width-card;
         height: $height-card;
         border: 1px solid green;
         border-radius: 5px;        
         margin: 0;
+        padding: 20px;
         top: 0;
         background-color: #019ff9;
         background-image: linear-gradient(to bottom, #019ff9, #83cffa);
         z-index:1;
+        overflow: auto;
         transition: transform 2s , z-index 2s;
         
         .overview{
             height: calc(100% - 50px);
             color:rgb(0, 0, 0);
-            overflow: hidden;
-            text-overflow: ellipsis;
             }
 
         img{
