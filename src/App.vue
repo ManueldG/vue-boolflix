@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <Header/>
-    <Main/>
+    <Header :invio="querys" @invio="querys">
+
+    </Header>
+    <Main :text="query">
+    </Main>
     <Footer/>
   </div>
 </template>
@@ -13,10 +16,24 @@ import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      query:'',
+    }
+  },
+  props: {
+    text: String
+  },
   components: {
     Main,Header,Footer
+  },
+  methods:{
+  querys(text){
+    this.query = text;
   }
 }
+}
+
 </script>
 
 <style lang="scss">

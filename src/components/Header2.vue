@@ -2,8 +2,9 @@
   <header id="Header">
       <img src="/img/MdGPlay.png" alt="LOGO">
       <Search 
-        @invio="importQ">
+         @invio="importQ" >  
       </Search>
+      
   </header>
 </template>
 
@@ -12,6 +13,14 @@
 import Search from "./Search.vue";
 
 export default {
+  data(){
+    return{
+      query:'',
+    }
+  },
+  props: {
+    text: String
+  },
   components: {
     Search
   },
@@ -19,7 +28,7 @@ export default {
     importQ(text){
             console.log("import text",text);
             this.query = text;
-            this.getData();
+            this.$emit('invio',text);
         }
   }
 

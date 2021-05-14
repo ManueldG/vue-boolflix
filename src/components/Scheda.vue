@@ -71,6 +71,7 @@ li#scheda{
     height: $height-card;
     margin: $margin-card;
     list-style:none;
+    
 
     .lato-a{  
         position:absolute; 

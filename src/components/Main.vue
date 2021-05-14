@@ -1,18 +1,11 @@
 <template>
-    <main id="Main" >
+    <main id="Main"  >
+        {{getData(text)}} <!--//prova--> 
         <Search 
-            @invio="importQ">
+            @invio="importQ" > <!--// prende dati da Search e chiama importQ con argomento testo -->
         </Search>
         <ul>
-            <div class="lista" v-if="(!film.length||!tv.length)">
-                <div class="titolo">
-                    {{ (best.length) ? "best" : "" }}
-                </div>   
-                <Scheda :lista="el" v-for="(el,index) in best"  :key="'best'+index"> 
-                        {{el}}{{index}}
-                </Scheda>
-            </div>  
-
+            
             <div class="lista">
                 <div class="titolo">
                     {{ (film.length) ? "Film" : "" }}
@@ -22,14 +15,24 @@
                 </Scheda>
             </div>  
 
-        <div class="lista">
-            <div class="titolo">            
-                {{ (tv.length) ? "Tv" : "" }}
+            <div class="lista">
+                <div class="titolo">            
+                    {{ (tv.length) ? "Tv" : "" }}
+                </div>  
+                <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
+                        {{el}}{{index}}
+                </Scheda>
+            </div>
+
+            <div class="lista" v-if="(!film.length||!tv.length)"> <!--// controlla se gli oggetti film e tv sono popolati -->
+                <div class="titolo">
+                    {{ (best.length) ? "best" : "" }} 
+                </div>   
+                <Scheda :lista="el" v-for="(el,index) in best"  :key="'best'+index">  <!--// lista props di scheda -->
+                        {{el}}{{index}}
+                </Scheda>
             </div>  
-            <Scheda :lista="el" v-for="(el,index) in tv"  :key="'tv'+index"> 
-                    {{el}}{{index}}
-            </Scheda>
-        </div>
+
 
         </ul>
 
@@ -51,19 +54,24 @@ export default {
             tv:{},
             film:{},
             best:{},
-            query:'',
+            query: '',
 
         }
     },
+    props:{
+        text: String,
+
+    },
     methods:{
-        getData(){ 
+        getData(text){ 
             let Y = new Date().getFullYear();
-            let one = 'https://api.themoviedb.org/3/search/movie?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+this.query
-            let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+this.query
+            let one = 'https://api.themoviedb.org/3/search/movie?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+text
+            let two = 'https://api.themoviedb.org/3/search/tv?api_key=49b7715adeda3f2ed02386b0db03af61&language=it-IT&query='+text
             let three ='https://api.themoviedb.org/3/discover/movie?api_key=49b7715adeda3f2ed02386b0db03af61&primary_release_year='+Y+'&sort_by=popularity.desc&language=it-IT'
-             
-            const requestOne = (this.query!=='')?axios.get(one):({});
-            const requestTwo = (this.query!=='')?axios.get(two):({});
+             console.log("getData",text);
+             console.log("this",text);
+            const requestOne = (text!=='')?axios.get(one):({});
+            const requestTwo = (text!=='')?axios.get(two):({});
             const requestThree = axios.get(three);
             
             
@@ -109,13 +117,14 @@ export default {
             
         },
         importQ(text){
-            console.log("import text",text);
-            this.query = text;
-            this.getData();
+            console.log("import text Main",text);
+            this.text = text;
+            this.getData(text);
+            return text;
         }
     },
     created(){
-        console.log("created");
+        console.log("created Main");
         this.getData();     
     }
 }
